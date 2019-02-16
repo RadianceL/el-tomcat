@@ -14,25 +14,30 @@ import java.util.Map;
  * @description 请求接收器
  */
 public class Request {
-    private ChannelHandlerContext ctx;
+    private ChannelHandlerContext channelHandlerContext;
 
-    private HttpRequest r;
+    private HttpRequest httpRequest;
 
-    public Request(ChannelHandlerContext ctx, HttpRequest r) {
-        this.ctx = ctx;
-        this.r = r;
+    public Request(ChannelHandlerContext channelHandlerContext, HttpRequest httpRequest) {
+        this.channelHandlerContext = channelHandlerContext;
+        this.httpRequest = httpRequest;
     }
 
     public String getUri() {
-        return r.uri();
+        return httpRequest.uri();
     }
 
     public String getMethod() {
-        return r.method().name();
+        return httpRequest.method().name();
+    }
+
+    public String getPath(){
+        QueryStringDecoder decoder = new QueryStringDecoder(httpRequest.uri());
+        return decoder.path();
     }
 
     public Map<String, List<String>> getParameters() {
-        QueryStringDecoder decoder = new QueryStringDecoder(r.uri());
+        QueryStringDecoder decoder = new QueryStringDecoder(httpRequest.uri());
         return decoder.parameters();
     }
 
