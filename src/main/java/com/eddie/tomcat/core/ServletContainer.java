@@ -1,6 +1,7 @@
 package com.eddie.tomcat.core;
 
 import com.eddie.tomcat.provider.Servlet;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
 import java.util.Objects;
@@ -15,7 +16,7 @@ public class ServletContainer {
 
     private static volatile ServletContainer singleton;
 
-    private Map<String, Servlet> container = new ConcurrentHashMap<>(8);
+    private Map<String, Servlet> container = new ConcurrentHashMap<>(64);
 
     private ServletContainer(){
         System.out.println("----容器初始化----");
@@ -37,7 +38,7 @@ public class ServletContainer {
      * @return
      */
     public Servlet getServlet(String path){
-        if (path == null && path.length() == 0){
+        if (StringUtils.isBlank(path) || path.length() == 0){
             throw new RuntimeException("需要处理的路径为空");
         }
         Servlet servlet = container.get(path);

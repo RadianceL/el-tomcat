@@ -19,19 +19,19 @@ public class ServerHandle extends ChannelInboundHandlerAdapter {
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         super.handlerAdded(ctx);
         initContainer();
-        System.out.println("添加handler执行完毕");
+        System.out.println("初始化handlerServlet执行完毕");
     }
 
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
         super.channelRegistered(ctx);
-        System.out.println("渠道注册");
+        System.out.println("渠道注册成功");
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         super.channelActive(ctx);
-        System.out.println("激活");
+        System.out.println("渠道激活成功");
     }
 
     private void initContainer(){

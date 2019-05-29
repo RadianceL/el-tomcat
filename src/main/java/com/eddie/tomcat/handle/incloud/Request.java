@@ -14,12 +14,10 @@ import java.util.Map;
  * @description 请求接收器
  */
 public class Request {
-    private ChannelHandlerContext channelHandlerContext;
 
     private HttpRequest httpRequest;
 
-    public Request(ChannelHandlerContext channelHandlerContext, HttpRequest httpRequest) {
-        this.channelHandlerContext = channelHandlerContext;
+    public Request(HttpRequest httpRequest) {
         this.httpRequest = httpRequest;
     }
 

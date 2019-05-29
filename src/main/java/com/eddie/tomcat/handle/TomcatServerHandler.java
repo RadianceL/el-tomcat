@@ -27,7 +27,7 @@ public class TomcatServerHandler extends ChannelInboundHandlerAdapter {
         if (msg instanceof HttpRequest){
             HttpRequest httpRequest = (HttpRequest) msg;
             // 转交给我们自己的request实现
-            Request request = new Request(ctx, httpRequest);
+            Request request = new Request(httpRequest);
             // 转交给我们自己的response实现
             Response response = new Response(ctx, httpRequest);
 

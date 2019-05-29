@@ -19,7 +19,7 @@ import io.netty.util.AttributeKey;
  * @createTime 2019-02-13
  * @description 启动类
  */
-public class ServerBoot {
+public class Bootstrap {
 
     public static void main(String[] args) {
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);

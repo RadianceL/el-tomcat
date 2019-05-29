@@ -5,6 +5,8 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.*;
 
+import java.nio.charset.StandardCharsets;
+
 import static io.netty.handler.codec.http.HttpHeaderNames.*;
 
 /**
@@ -23,7 +25,7 @@ public class Response {
         this.r = r;
     }
 
-    public void write(String out) throws Exception {
+    public void write(String out) {
         try {
             if (out == null || out.length() == 0) {
                 return;
@@ -35,7 +37,7 @@ public class Response {
                     // 设置响应状态码
                     HttpResponseStatus.OK,
                     // 将输出值写出 编码为UTF-8
-                    Unpooled.wrappedBuffer(out.getBytes("UTF-8")));
+                    Unpooled.wrappedBuffer(out.getBytes(StandardCharsets.UTF_8)));
             // 设置连接类型 为 JSON
             response.headers().set(CONTENT_TYPE, "text/json");
             // 设置请求头长度
