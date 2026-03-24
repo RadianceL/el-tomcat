@@ -26,28 +26,36 @@ public class Response {
     }
 
     public void write(String out) {
+        write(out, HttpResponseStatus.OK, "text/plain; charset=UTF-8");
+    }
+
+    public void write(String out, HttpResponseStatus status, String contentType) {
         try {
-            if (out == null || out.length() == 0) {
-                return;
+            if (out == null) {
+                out = "";
             }
             // 设置 http协议及请求头信息
             FullHttpResponse response = new DefaultFullHttpResponse(
                     // 设置http版本为1.1
                     HttpVersion.HTTP_1_1,
                     // 设置响应状态码
-                    HttpResponseStatus.OK,
+                    status,
                     // 将输出值写出 编码为UTF-8
                     Unpooled.wrappedBuffer(out.getBytes(StandardCharsets.UTF_8)));
-            // 设置连接类型 为 JSON
-            response.headers().set(CONTENT_TYPE, "text/json");
-            // 设置请求头长度
-            response.headers().set(CONTENT_LANGUAGE, response.content().readableBytes());
-            // 设置超时时间为5000ms
-            response.headers().set(EXPIRES, 5000);
+            // 设置连接类型
+            response.headers().set(CONTENT_TYPE, contentType);
+            // 设置内容长度
+            response.headers().set(CONTENT_LENGTH, response.content().readableBytes());
+            // 设置连接保持
+            response.headers().set(CONNECTION, HttpHeaderValues.KEEP_ALIVE);
             ctx.write(response);
         } finally {
             ctx.flush();
-            ctx.close();
         }
+    }
+
+    public void writeError(HttpResponseStatus status, String message) {
+        String html = "<html><body><h1>" + status.code() + " " + status.reasonPhrase() + "</h1><p>" + message + "</p></body></html>";
+        write(html, status, "text/html; charset=UTF-8");
     }
 }

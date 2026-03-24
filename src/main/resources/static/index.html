@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL-Tomcat 欢迎页面</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+        .feature-list li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .code-block {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 EL-Tomcat</h1>
+        <p class="subtitle">基于 Netty 的轻量级 Servlet 容器</p>
+
+        <h2>已实现功能</h2>
+        <ul class="feature-list">
+            <li>HTTP GET/POST/PUT/DELETE 请求支持</li>
+            <li>URL 参数和请求体参数解析</li>
+            <li>静态资源服务（HTML/CSS/JS/图片）</li>
+            <li>404/500 错误页面</li>
+            <li>配置文件支持</li>
+            <li>日志框架集成</li>
+            <li>HTTP 长连接支持</li>
+        </ul>
+
+        <h2>测试接口</h2>
+        <div class="code-block">
+GET  /?name=World     - 返回问候消息<br>
+POST / (name=test)    - POST 请求测试
+        </div>
+
+        <p style="text-align: center; color: #999; margin-top: 30px;">
+            <small>EL-Tomcat 学习项目 - 仅供学习参考</small>
+        </p>
+    </div>
+</body>
+</html>

@@ -2,6 +2,8 @@ package com.eddie.tomcat.core;
 
 import com.eddie.tomcat.provider.Servlet;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.Objects;
@@ -14,12 +16,13 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ServletContainer {
 
+    private static final Logger logger = LoggerFactory.getLogger(ServletContainer.class);
     private static volatile ServletContainer singleton;
 
     private Map<String, Servlet> container = new ConcurrentHashMap<>(64);
 
     private ServletContainer(){
-        System.out.println("----容器初始化----");
+        logger.info("---- Servlet 容器初始化 ----");
     }
 
     /**
@@ -28,7 +31,7 @@ public class ServletContainer {
      * @param servlet
      */
     public void addServlet(String path, Servlet servlet){
-        System.out.println("Mapping path {" + path + "}");
+        logger.info("Mapping path [{}] to servlet [{}]", path, servlet.getClass().getSimpleName());
         container.put(path, servlet);
     }
 
@@ -43,9 +46,10 @@ public class ServletContainer {
         }
         Servlet servlet = container.get(path);
         if (Objects.isNull(servlet)){
+            logger.warn("未找到路径 [{}] 对应的 Servlet", path);
             throw new RuntimeException("未找到该路径的处理类");
         }
-        System.out.println("获取 {" + path + "}的servlet成功");
+        logger.debug("获取 [{}] 的 Servlet 成功", path);
         return servlet;
     }
 

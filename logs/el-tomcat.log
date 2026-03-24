@@ -1,0 +1,14 @@
+2026-03-24 14:52:11.289 [main] INFO  c.eddie.tomcat.core.ServletContainer - ---- Servlet 容器初始化 ----
+2026-03-24 14:52:11.405 [nioEventLoopGroup-2-1] INFO  c.eddie.tomcat.core.ServletContainer - Mapping path [/api/hello] to servlet [MyServlet]
+2026-03-24 14:52:11.407 [nioEventLoopGroup-2-1] INFO  c.eddie.tomcat.core.ServletContainer - Mapping path [/favicon.ico] to servlet [DefaultFaviconServlet]
+2026-03-24 14:52:11.407 [nioEventLoopGroup-2-1] INFO  c.eddie.tomcat.core.ServletContainer - Mapping path [/] to servlet [StaticResourceHandler]
+2026-03-24 14:52:11.408 [nioEventLoopGroup-2-1] INFO  c.eddie.tomcat.core.ServletContainer - Mapping path [/index.html] to servlet [StaticResourceHandler]
+2026-03-24 14:52:11.408 [nioEventLoopGroup-2-1] INFO  com.eddie.tomcat.handle.ServerHandle - Servlet 容器初始化完成
+2026-03-24 14:53:02.048 [com.eddie.tomcat.Bootstrap.main()] INFO  c.eddie.tomcat.core.ServletContainer - ---- Servlet 容器初始化 ----
+2026-03-24 14:53:02.117 [nioEventLoopGroup-2-1] INFO  c.eddie.tomcat.core.ServletContainer - Mapping path [/api/hello] to servlet [MyServlet]
+2026-03-24 14:53:02.119 [nioEventLoopGroup-2-1] INFO  c.eddie.tomcat.core.ServletContainer - Mapping path [/favicon.ico] to servlet [DefaultFaviconServlet]
+2026-03-24 14:53:02.119 [nioEventLoopGroup-2-1] INFO  c.eddie.tomcat.core.ServletContainer - Mapping path [/] to servlet [StaticResourceHandler]
+2026-03-24 14:53:02.119 [nioEventLoopGroup-2-1] INFO  c.eddie.tomcat.core.ServletContainer - Mapping path [/index.html] to servlet [StaticResourceHandler]
+2026-03-24 14:53:02.119 [nioEventLoopGroup-2-1] INFO  com.eddie.tomcat.handle.ServerHandle - Servlet 容器初始化完成
+2026-03-24 14:54:34.544 [nioEventLoopGroup-3-5] WARN  c.eddie.tomcat.core.ServletContainer - 未找到路径 [/notfound] 对应的 Servlet
+2026-03-24 14:54:38.959 [nioEventLoopGroup-3-6] WARN  c.eddie.tomcat.core.ServletContainer - 未找到路径 [/22] 对应的 Servlet
